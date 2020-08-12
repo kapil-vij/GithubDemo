@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="dataModel"
+            type="com.demo.search.data.model.ReposResponseEntity" />
+
+        <import type="android.view.View" />
+        <import type="android.text.TextUtils" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="7dp"
+        app:cardElevation="5dp"
+        app:cardUseCompatPadding="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_search_result" >
+
+            <TextView
+                android:id="@+id/txvLanguage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="@dimen/dimen_5dp"
+                android:background="@drawable/bg_indicator"
+                android:paddingLeft="@dimen/dimen_10dp"
+                android:paddingTop="3dp"
+                android:paddingRight="@dimen/dimen_10dp"
+                android:paddingBottom="3dp"
+                android:text="@{dataModel.language}"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_12sp"
+                android:visibility="@{TextUtils.isEmpty(dataModel.language)?View.INVISIBLE:View.VISIBLE}" />
+
+            <TextView
+                android:id="@+id/txvRepoName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@+id/txvLanguage"
+                android:layout_marginLeft="@dimen/dimen_10dp"
+                android:layout_marginRight="@dimen/dimen_10dp"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                android:text="@{dataModel.name}"
+                android:textColor="@color/text_grey"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/txvDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txvRepoName"
+                android:layout_marginLeft="@dimen/dimen_10dp"
+                android:layout_marginRight="@dimen/dimen_10dp"
+                android:layout_marginTop="@dimen/dimen_5dp"
+                android:text="@{dataModel.description}"
+                android:textColor="@color/text_grey" />
+
+
+            <TextView
+                android:id="@+id/txvRepoUrl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txvDescription"
+                android:layout_marginLeft="@dimen/dimen_10dp"
+                android:layout_marginRight="@dimen/dimen_10dp"
+                android:layout_marginTop="@dimen/dimen_5dp"
+                android:layout_marginBottom="@dimen/dimen_15dp"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:autoLink="web"
+                android:text="@{dataModel.html_url}"
+                android:textColor="@color/text_grey" />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+</layout>

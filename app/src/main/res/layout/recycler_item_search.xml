@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="dataModel"
+            type="com.demo.search.data.model.SearchResultData" />
+
+        <import type="android.view.View" />
+        <import type="android.text.TextUtils" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="7dp"
+        app:cardElevation="5dp"
+        app:cardUseCompatPadding="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_search_result" >
+
+            <ImageView
+                android:id="@+id/imgUserProfile"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="@dimen/dimen_10dp"
+                app:srcCompat="@drawable/ic_account_circle" />
+
+            <TextView
+                android:id="@+id/txvNotifyIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="@dimen/dimen_5dp"
+                android:background="@drawable/bg_indicator"
+                android:paddingLeft="@dimen/dimen_10dp"
+                android:paddingTop="3dp"
+                android:paddingRight="@dimen/dimen_10dp"
+                android:paddingBottom="3dp"
+                android:text="@{dataModel.type}"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_12sp"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/txvUserName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@+id/txvNotifyIndicator"
+                android:layout_marginTop="@dimen/dimen_15dp"
+                android:layout_toEndOf="@id/imgUserProfile"
+                android:text="@{dataModel.login}"
+                android:textColor="@color/text_grey"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/txvProfileUrl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txvUserName"
+                android:layout_toEndOf="@id/imgUserProfile"
+                android:layout_marginEnd="@dimen/dimen_15dp"
+                android:drawablePadding="@dimen/dimen_10dp"
+                android:layout_marginTop="@dimen/dimen_5dp"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:autoLink="web"
+                android:text="@{dataModel.htmlUrl}"
+                android:textColor="@color/text_grey" />
+
+            <TextView
+                android:id="@+id/txvViewRepos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txvProfileUrl"
+                android:layout_alignParentEnd="true"
+                android:padding="@dimen/dimen_5dp"
+                android:ems="8"
+                android:layout_margin="@dimen/dimen_15dp"
+                android:gravity="center"
+                android:background="@drawable/bg_btn_primary"
+                android:text="@string/lbl_view_repos"
+                android:textColor="@color/white" />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+</layout>
